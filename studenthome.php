@@ -25,24 +25,10 @@
     <title>Admin Pannel</title>
 </head>
 <body>
-    <header class="header">
-        <a href="">Student Dashboard</a>
-
-        <div class="logout">
-            <a class="btn btn-primary" href="logout.php">Logout</a>
-        </div>
-    </header>
-    <aside>
-        <ul>
-            <li>
-                <a href="">My Courses</a>
-            </li>
-            <li>
-                <a href="">Add Student</a>
-            </li>
-            
-        </ul>
-    </aside>
+    <?php
+        include 'student_sidebar.php';
+    
+    ?>
     <div class="content">
         <h1>Welcome Student</h1>
         <p>Here you can control almost anything on this website as an admin.Explore and enjoy this this easy admin pannel</p>

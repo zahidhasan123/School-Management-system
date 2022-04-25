@@ -55,6 +55,7 @@
                 <th style="padding: 20px; font-size: 15px;">Email</th>
                 <th style="padding: 20px; font-size: 15px;">Phone</th>
                 <th style="padding: 20px; font-size: 15px;">Password</th>
+                <th style="padding: 20px; font-size: 15px;">Delete</th>
             </tr>
 
             <?php
@@ -75,6 +76,9 @@
                 </td>
                 <td style="padding: 20px;">
                     <?php echo "{$info['password']}"; ?>
+                </td>
+                <td style="padding: 20px;">
+                    <?php echo "<a onClick=\" javascript:return confirm('Are You Sure To Delete This Student')\" href='delete.php?student_id={$info['id']}'>DELETE</a>";?>
                 </td>
             </tr>
             <?php

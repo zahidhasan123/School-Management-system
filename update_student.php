@@ -11,8 +11,6 @@
         header('location: login.php');
     }
 
-
-
     $host = "localhost";
     $user = "root";
     $password = "";
@@ -20,55 +18,40 @@
 
     $data = mysqli_connect($host, $user, $password, $db);
 
-    if(isset($_POST['add_student']))
+    $id= $_GET['student_id'];
+
+    $sql = "SELECT * FROM user WHERE id='$id' ";
+
+    $result = mysqli_query($data,$sql);
+
+    $info = $result->fetch_assoc();
+
+
+
+    if(isset($_POST['update']))
+
     {
-        $username = $_POST['name'];
-
+        $name = $_POST['name'];
         $email = $_POST['email'];
-
         $phone = $_POST['phone'];
-
         $password = $_POST['password'];
 
-        $usertype = "student";
 
-        $check="SELECT * FROM user WHERE username='$username' ";
-        $check_user=mysqli_query($data,$check);
-        $row_count=mysqli_num_rows($check_user);
+        $query = "UPDATE user SET username='$name', phone='$phone', email='#email', password='$password' WHERE id='$id' ";
 
-        if($row_count==1)
+        $result2 = mysqli_query($data,$query);
+
+        if($result2)
         {
             echo "<script type='text/javascript'>
             
-            alert('Username Already Exist. Try Another One');
+            alert('Student Data Updated');
 
-            </script>";
+            </script>";;
         }
-        else
-        {
-
-        
-
-        $sql = "INSERT INTO user(username, phone, email, usertype, password) VALUES ('$username', '$phone', '$email', '$usertype', '$password')";
-
-        $result = mysqli_query($data,$sql);
-        if($result)
-        {
-            echo "<script type='text/javascript'>
-            
-            alert('Data Uploaded Successfully');
-
-            </script>";
-        }
-        else
-        {
-            echo "Upload Failed";
-        }
-
-        }
-
-
     }
+
+
 
 ?>
 
@@ -107,35 +90,36 @@
         include 'admin_sidebar.php';
     
     ?>
+
+
     <div class="content">
         <center>
-        <h1>Add Student</h1>
+        <h1>Update Student Data</h1>
         <div class="div_style">
             <form action="#" method="POST">
                 <div>
                     <label for="">Username</label>
-                    <input type="text" name="name">
+                    <input type="text" name="name" value="<?php echo "{$info['username']}" ;?>">
                 </div>
                 <div>
                     <label for="">Email</label>
-                    <input type="email" name="email">
+                    <input type="email" name="email" value="<?php echo "{$info['email']}" ;?>">
                 </div>
                 <div>
                     <label for="">Phone</label>
-                    <input type="number" name="phone">
+                    <input type="number" name="phone" value="<?php echo "{$info['phone']}" ;?>">
                 </div>
                 <div>
                     <label for="">Password</label>
-                    <input type="text" name="password">
+                    <input type="text" name="password" value="<?php echo "{$info['password']}" ;?>">
                 </div>
                 <div>
-                    <input class="btn btn-success" type="submit" name="add_student" value="Add Student">
+                    <input class="btn btn-success" type="submit" name="update" value="update">
                 </div>
             </form>
         </div>
         </center>
     </div>
-
     
 
 
@@ -143,4 +127,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     
 </body>
+</html>
 </html>

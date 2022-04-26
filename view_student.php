@@ -56,6 +56,7 @@
                 <th style="padding: 20px; font-size: 15px;">Phone</th>
                 <th style="padding: 20px; font-size: 15px;">Password</th>
                 <th style="padding: 20px; font-size: 15px;">Delete</th>
+                <th style="padding: 20px; font-size: 15px;">Update</th>
             </tr>
 
             <?php
@@ -78,7 +79,11 @@
                     <?php echo "{$info['password']}"; ?>
                 </td>
                 <td style="padding: 20px;">
-                    <?php echo "<a onClick=\" javascript:return confirm('Are You Sure To Delete This Student')\" href='delete.php?student_id={$info['id']}'>DELETE</a>";?>
+                    <?php echo "<a class='btn btn-danger' onClick=\" javascript:return confirm('Are You Sure To Delete This Student')\" href='delete.php?student_id={$info['id']}'>DELETE</a>";?>
+                </td>
+
+                <td style="padding: 20px;">
+                    <?php echo "<a class='btn btn-info' href='update_student.php?student_id={$info['id']}'> UPDATE </a>"; ?>
                 </td>
             </tr>
             <?php

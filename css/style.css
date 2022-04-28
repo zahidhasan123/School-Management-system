@@ -81,14 +81,9 @@
 }
 
 
-
-
-
-
 footer {
-    text-align: center;
-    padding-top: 30px;
-    padding: 3px;
-    background-color: black;
-    color: white;
-  }
+    background: #111;
+    padding: 20px 23px;
+    color: #fff;
+}
+  

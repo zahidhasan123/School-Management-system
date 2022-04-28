@@ -11,7 +11,7 @@
                 <a href="">My Courses</a>
             </li>
             <li>
-                <a href="">Add Student</a>
+                <a href="">My Result</a>
             </li>
             
         </ul>

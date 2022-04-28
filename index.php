@@ -157,8 +157,8 @@
         <!--Footer-->
 
         <footer>
-        <p>Author: Zahid<br>
-        <a href="https://www.facebook.com/profile.php?id=100066076810758">@All rights reserved</a></p>
+            <span>Created By <a href="https://www.facebook.com/profile.php?id=100050514144071">@zahid_hasan</a> | © 2021 All rights reserved | Mobile: +8801625836102</span>
+        
         </footer>
 
     <!--JAvascript--->

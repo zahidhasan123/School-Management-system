@@ -31,7 +31,7 @@
     ?>
     <div class="content">
         <h1>Welcome Student</h1>
-        <p>Here you can control almost anything on this website as an admin.Explore and enjoy this this easy admin pannel</p>
+        <p>Here you can see your result and select your courses</p>
     </div>
     
 

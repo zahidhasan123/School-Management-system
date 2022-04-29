@@ -6,10 +6,13 @@
         header('location: login.php');
 
     }
-    elseif($_SESSION['usertype'] == 'student')
+    elseif($_SESSION['usertype'] == 'admin')
     {
         header('location: login.php');
     }
+
+
+
 
     $host = "localhost";
     $user = "root";
@@ -18,28 +21,28 @@
 
     $data = mysqli_connect($host, $user, $password, $db);
 
-    $id= $_GET['student_id'];
+    $name = $_SESSION['username'];
 
-    $sql = "SELECT * FROM user WHERE id='$id' ";
+    $sql = "SELECT * FROM user WHERE username = '$name' ";
 
     $result = mysqli_query($data,$sql);
 
-    $info = $result->fetch_assoc();
+    $info = mysqli_fetch_assoc($result);
 
 
 
     if(isset($_POST['update']))
 
     {
-        $name = $_POST['name'];
+        
         $email = $_POST['email'];
         $phone = $_POST['phone'];
         $password = $_POST['password'];
 
 
-        $query = "UPDATE user SET username='$name', phone='$phone', email='$email', password='$password' WHERE id='$id' ";
+        $sql2 = "UPDATE user SET  phone='$phone', email='$email', password='$password' WHERE username='$name' ";
 
-        $result2 = mysqli_query($data,$query);
+        $result2 = mysqli_query($data,$sql2);
 
         if($result2)
         {
@@ -53,8 +56,9 @@
 
 
 
-?>
+    
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -66,6 +70,7 @@
     <link rel="stylesheet" href="css/admin.css">
     
     <title>Admin Pannel</title>
+
     <style type="text/css"> 
         label
         {
@@ -87,31 +92,26 @@
 </head>
 <body>
     <?php
-        include 'admin_sidebar.php';
+        include 'student_sidebar.php';
     
     ?>
-
-
-    <div class="content">
+     <div class="content">
         <center>
         <h1>Update Student Data</h1>
         <div class="div_style">
             <form action="#" method="POST">
-                <div>
-                    <label for="">Username</label>
-                    <input type="text" name="name" value="<?php echo "{$info['username']}" ;?>">
-                </div>
+                
                 <div>
                     <label for="">Email</label>
-                    <input type="email" name="email" value="<?php echo "{$info['email']}" ;?>">
+                    <input type="email" name="email" value="<?php echo "{$info['email']}" ?>">
                 </div>
                 <div>
                     <label for="">Phone</label>
-                    <input type="number" name="phone" value="<?php echo "{$info['phone']}" ;?>">
+                    <input type="number" name="phone" value="<?php echo "{$info['phone']}" ?>">
                 </div>
                 <div>
                     <label for="">Password</label>
-                    <input type="text" name="password" value="<?php echo "{$info['password']}" ;?>">
+                    <input type="text" name="password" value="<?php echo "{$info['password']}" ?>">
                 </div>
                 <div>
                     <input class="btn btn-success" type="submit" name="update" value="update">
@@ -127,5 +127,4 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     
 </body>
-</html>
 </html>
